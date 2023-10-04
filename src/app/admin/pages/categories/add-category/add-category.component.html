@@ -1,0 +1,32 @@
+<div class="popup-subscribe-box">
+    <div class="popup-subscribe-box-content">
+        <div class="popup-subscribe-box-body">
+            <a class="popup-close" (click)="close()">
+                <mat-icon>close</mat-icon>
+            </a>
+            <h3>Agregar Categoría</h3>
+            
+            <div class="checkout-form">
+                <form [formGroup]="form" class="form" name="mc-embedded-subscribe-form" target="_blank">
+                    <div class="wizard-container">
+                        <div class="card-wizard" data-color="primary" id="wizardProfile">
+                            <div class="row mt-4">
+                                <div class="col-md-12">
+                                    <div class="form-group row mt-3">
+                                        <div class="col-md-12">
+                                            <input type="text" id="description" name="description" formControlName="description" class="form__input form__input--2 nice-input" placeholder="Ingresar Descripción">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <br><br>
+    
+                    <input type="submit" value="Agregar" class="btn subscribe-btn btn-medium btn-style-1" (click)="postCategory()">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

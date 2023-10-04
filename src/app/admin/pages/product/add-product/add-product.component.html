@@ -1,0 +1,267 @@
+<div class="popup-subscribe-box">
+    <div class="popup-subscribe-box-content">
+        <div class="popup-subscribe-box-body">
+            <a class="popup-close" (click)="close()">
+                <mat-icon>close</mat-icon>
+            </a>
+            <h3>Agregar Producto</h3>
+            
+            <div class="checkout-form">
+                <form [formGroup]="form" enctype="multipart/form-data" class="form" name="mc-embedded-subscribe-form">
+                    <div class="wizard-container">
+                        <div class="card-wizard" data-color="primary" id="wizardProfile">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="custom-dropzone-dist-p" ngx-dropzone [accept]="'image/*'" (change)="onSelect($event)">
+                                                        <ngx-dropzone-label>
+                                                            <div>
+                                                                <img src="assets/img/icons/upload.png" width="38px" height="38px">
+                                                                
+                                                                <h6 style="color: #000;">SUBIR FOTO FRONTAL</h6>
+                                                            </div>
+                                                        </ngx-dropzone-label>
+                                                        <ngx-dropzone-image-preview class="center" id="preview-dist" ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f[0]" [removable]="true" (removed)="onRemove(f[0])">
+                                                        </ngx-dropzone-image-preview>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                                        <div class="col-md-6">
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="custom-dropzone-dist-p" ngx-dropzone [accept]="'image/*'" (change)="onSelectLateral($event)">
+                                                        <ngx-dropzone-label>
+                                                            <div>
+                                                                <img src="assets/img/icons/upload.png" width="38px" height="38px">
+                                                                
+                                                                <h6 style="color: #000;">SUBIR FOTO LATERAL</h6>
+                                                            </div>
+                                                        </ngx-dropzone-label>
+                                                        <ngx-dropzone-image-preview class="center" id="preview-dist" ngProjectAs="ngx-dropzone-preview" *ngFor="let f of filesLateral" [file]="f[0]" [removable]="true" (removed)="onRemoveLateral(f[0])">
+                                                        </ngx-dropzone-image-preview>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="row mt-4">
+                                <div class="col-md-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <div class="col-md-12">
+                                                    <input type="text" id="sku" name="sku" formControlName="sku" class="form__input form__input--2 nice-input" placeholder="Ingresar SKU">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <div class="col-md-12">
+                                                    <input type="text" id="price" name="price" formControlName="price" class="form__input form__input--2 nice-input" placeholder="Ingresar Precio">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mt-4">
+                                <div class="col-md-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <div class="col-md-10">
+                                                    <div class="form__group">
+                                                        <select id="brand" name="brand" formControlName="brand" class="form__input form__input--2 nice-select">
+                                                            <option value="" hidden>Seleccionar Marca</option>
+                                                            <option *ngFor="let brand of brands" value="{{brand._id}}">{{ brand.description | uppercase }}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <div class="form__group" style="text-align: right;">
+                                                        <button class="btn-view-more" (click)="openModal('BRAND')">
+                                                           +
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <div class="col-md-10">
+                                                    <div class="form__group">
+                                                        <select id="movement" name="movement" formControlName="movement" class="form__input form__input--2 nice-select">
+                                                            <option value="" hidden>Seleccionar Movimiento</option>
+                                                            <option *ngFor="let movement of movements" value="{{movement._id}}">{{ movement.description | uppercase }}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <div class="form__group" style="text-align: right;">
+                                                        <button class="btn-view-more" (click)="openModal('MOVEMENT')">
+                                                           +
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row mt-3">
+                                                <div class="col-md-10">
+                                                    <div class="form__group">
+                                                        <select id="model" name="model" formControlName="model" class="form__input form__input--2 nice-select">
+                                                            <option value="" hidden>Seleccionar Modelo</option>
+                                                            <option *ngFor="let model of models" value="{{model._id}}">{{ model.description | uppercase }}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <div class="form__group" style="text-align: right;">
+                                                        <button class="btn-view-more" (click)="openModal('MODEL')">
+                                                           +
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                                        <div class="col-md-6">
+                                            <div class="form-group row mt-3">
+                                                <div class="col-md-10">
+                                                    <div class="form__group">
+                                                        <select id="gender" name="gender" formControlName="gender" class="form__input form__input--2 nice-select">
+                                                            <option value="" hidden>Seleccionar Género</option>
+                                                            <option *ngFor="let gender of genders" value="{{gender._id}}">{{ gender.description | uppercase }}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <div class="form__group" style="text-align: right;">
+                                                        <button class="btn-view-more">
+                                                           +
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row mt-3">
+                                                <div class="col-md-12">
+                                                    <input type="text" id="material" name="material" formControlName="material" class="form__input form__input--2 nice-input" placeholder="Ingresar Material de Banda">
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                                        <div class="col-md-6">
+                                            <div class="form-group row mt-3">
+                                                <div class="col-md-12">
+                                                    <input type="text" id="width" name="width" formControlName="width" class="form__input form__input--2 nice-input" placeholder="Ingresar Ancho  de banda">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row mt-3">
+                                                <div class="col-md-12">
+                                                    <input type="text" id="dialShape" name="dialShape" formControlName="dialShape" class="form__input form__input--2 nice-input" placeholder="Ingresar Forma de Dial">
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                                        <div class="col-md-6">
+                                            <div class="form-group row mt-3">
+                                                <div class="col-md-12">
+                                                    <input type="text" id="type" name="type" formControlName="type" class="form__input form__input--2 nice-input"  placeholder="Ingresar Tipo de Cierre">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row mt-3">
+                                                <div class="col-md-12">
+                                                    <input type="text" id="diameter" name="diameter" formControlName="diameter" class="form__input form__input--2 nice-input" placeholder="Ingresar Diámetro de Dial">
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                                        <div class="col-md-6">
+                                            <div class="form-group row mt-3">
+                                                <div class="col-md-12">
+                                                    <input type="text" id="longitude" name="longitude" formControlName="longitude" class="form__input form__input--2 nice-input"  placeholder="Ingresar Longitud de Reloj">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row mt-3">
+                                                <div class="col-md-12">
+                                                    <input type="text" id="resistance" name="resistance" formControlName="resistance" class="form__input form__input--2 nice-input" placeholder="Ingresar Resistencia al Agua">
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                                        <div class="col-md-6">
+                                            <div class="form-group row mt-3">
+                                                <div class="col-md-12">
+                                                    <input type="text" id="calendar" name="calendar" formControlName="calendar" class="form__input form__input--2 nice-input"  placeholder="Ingresar Calendario">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <br><br>
+    
+                    <input type="submit" value="Agregar" class="btn subscribe-btn btn-medium btn-style-1" (click)="postProduct()">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

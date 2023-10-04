@@ -1,0 +1,96 @@
+
+<div class="breadcrumb-area">
+  <div class="container">
+      <div class="row">
+          <div class="col-12 text-center">
+              <h1 class="page-title">Productos</h1>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="main-content-wrapper">
+  <div class="blog-area pt--40 pb--80 pt-md--30 pb-md--60">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-12">
+                  <div class="row">
+                          <div class="col-xl-3 col-lg-4 col-md-6 mb--30" *ngFor="let item of dataSource?.data">
+                              <article class="post sticky single-post format-image" >
+                                  <div class="post-media">
+                                      <div class="image">
+                                          <a href="{{ item.img }}" target="_blank">
+                                              <!-- <img src="assets/img/blog/blog1.jpg" alt="blog"> -->
+  
+                                              <img src="{{ item.img }}"  alt="blog">
+                                          </a>
+                                      </div>
+                                  </div>
+                                  <div class="post-info">
+                                      
+                                      <div class="post-content">
+                                          <div class="col-md-12">
+                                              <div class="row">
+                                                  <p class="col-md-6">
+                                                      Marca:
+                                                  </p>
+                                                  <p class="col-md-6">
+                                                      {{ item.brand.description }}
+                                                  </p>
+                                              </div>
+  
+                                              <div class="row">
+                                                  <p class="col-md-6">
+                                                      Movimiento:
+                                                  </p>
+                                                  <p class="col-md-6">
+                                                      {{ item.movement.description }}
+                                                  </p>
+                                              </div>
+  
+                                              <div class="row">
+                                                  <p class="col-md-6">
+                                                      MODELO:
+                                                  </p>
+                                                  <p class="col-md-6">
+                                                      {{ item.model.description }}
+                                                  </p>
+                                              </div>
+  
+                                              <div class="row">
+                                                  <p class="col-md-6">
+                                                      Sexo:
+                                                  </p>
+                                                  <p class="col-md-6">
+                                                      {{ item.gender.description }}
+                                                  </p>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <button routerLink="/detail/{{item._id}}" class="btn btn-read-more btn-style-2">Ver más</button>
+                                  </div>
+                              </article>
+                          </div>
+                  </div>
+                  <div class="row">
+                      <div class="pagination-wrap" style="text-align: center;">
+                      <div class="col-12">
+                          <div class="row">
+                                  <div class="col-md-1"></div>
+                                  <div class="col-md-6">
+                                      <mat-paginator [pageSize]="10" ></mat-paginator>
+                                  </div>
+
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<a class="scroll-to-top" style="cursor: pointer;" (click)="openModal()">
+  <mat-icon>close</mat-icon>
+</a>

@@ -1,0 +1,82 @@
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="page-title">Detalle Producto</h1>
+            </div>
+        </div>
+    </div>
+</div>
+  
+<div class="main-content-wrapper">
+    <div class="single-products-area section-padding section-md-padding">
+        <div class="container">
+            <section class="mirora-single-product pb--80 pb-md--60">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="tab-content product-details-thumb-large" id="myTabContent-3">
+                            <div class="tab-pane fade show active" id="product-large-one">
+                                <div class="product-details-img easyzoom">
+                                    <a class="popup-btn">
+                                        <img src="{{ imgPrimaria }}" alt="product">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-details-thumbnail">
+                            <div class="thumb-menu product-details-thumb-menu nav-vertical-center" id="thumbmenu-horizontal">
+                                <div class="thumb-menu-item">
+                                    <a data-bs-toggle="tab" class="nav-link active" align="center" >
+                                        <img  width="150px"  height="100px" style="margin: 5px 10px; cursor: pointer;" src="{{ product?.img }}" (click)="getPrimaryImg(product.img)" alt="product thumb">
+                                        <img  width="150px"  height="100px" style="margin: 5px 10px; cursor: pointer;" src="{{ product?.imgLateral }}"  (click)="getPrimaryImg(product.imgLateral)" alt="product thumb">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="product-details-content"> 
+                            <div class="product-details-top">
+                                <h2 class="product-details-name">{{ product?.sku }}</h2>
+
+                                <table class="product-details-table">
+                                    <tr>
+                                        <td>Marca:</td>
+                                        <td>{{ product?.brand.description }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Movimiento:</td>
+                                        <td>{{ product?.movement.description }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Género:</td>
+                                        <td>{{ product?.gender.description }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Model:</td>
+                                        <td>{{ product?.model.description }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Material de banda:</td>
+                                        <td>{{ product?.material }}</td>
+                                    </tr>
+                                </table>
+
+                                <div class="product-details-action-top d-flex align-items-center mb--10">
+                                    <div class="product-details-price-wrapper">
+                                        <span class="money">$ {{ product?.price }}</span>
+                                    </div>  
+
+                                    <button type="button" id="buy" class="btn btn-medium btn-style-2 add-to-cart">
+                                        Comprar ahora
+                                    </button>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
